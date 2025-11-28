@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ULP Request</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="app-wrapper">
+        <header class="app-header">
+            <div class="logo">
+                <span class="logo-text">ULP Request</span> <span class="logo-tag">SEARCH</span>
+            </div>
+            <div class="header-stats">
+                <div class="stat-badge" id="CurrentSpeed"></div>
+                <div class="stat-badge" id="timeSpent"></div>
+            </div>
+        </header>
+
+        <main class="main-container">
+            <div class="control-card">
+                
+                <div class="search-group" id="requestCell">
+                    <div class="input-wrapper">
+                        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <input id="requestInput" type="text" placeholder="Search query (e.g. user|admin|pass)..." autocomplete="off" spellcheck="false">
+                        
+                        <button id="searchButton" class="btn-primary search-btn" title="Start Search">
+                            Search
+                        </button>
+                    </div>
+                    <div id="historyDropdown" class="history-dropdown"></div>
+                </div>
+
+                <div class="file-ops-bar" id="databaseCell">
+                    <div class="file-info">
+                        <span class="label">Database:</span>
+                        <span id="fileName" class="filename-display">No file selected</span>
+                        <span id="fileSize" class="lines-found"></span>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button id="uploadFileButton" class="btn-icon" title="Upload File">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                            <span>File</span>
+                        </button>
+                        <button id="uploadFolderButton" class="btn-icon" title="Upload Folder">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                            <span>Folder</span>
+                        </button>
+                        <button id="downloadResultsButton" class="btn-icon disabled" title="Download Results">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            <span>Save</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="settings-grid" id="Settings">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="loginpass">
+                        <span class="checkmark"></span>
+                        <span class="text">Login:Pass</span>
+                    </label>
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="mailpass">
+                        <span class="checkmark"></span>
+                        <span class="text">Email:Pass</span>
+                    </label>
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="caseSensitive">
+                        <span class="checkmark"></span>
+                        <span class="text">Case Sensitive</span>
+                    </label>
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="showFileNames">
+                        <span class="checkmark"></span>
+                        <span class="text">Debug Mode</span>
+                    </label>
+                </div>
+            </div>
+
+            <div id="inputPanel" class="results-panel">
+                <div class="code-editor-wrapper" id="codeEditor">
+                    <div id="lineNumbers" class="line-numbers">1</div>
+                    <textarea id="bigInput" spellcheck="false" wrap="off" placeholder="Results will appear here..."></textarea>
+                </div>
+            </div>
+        </main>
+
+        <input type="file" id="fileInput" style="display:none">
+        
+        <div id="dropOverlay">
+            <div class="drop-content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                <p>Release to Upload</p>
+            </div>
+        </div>
+
+        <footer class="app-footer">
+            <span>ULP Request - [Beta-0.0.1V.R] - xise(xie)</span>
+        </footer>
+    </div>
+
+    <script src="utils/download-results.js"></script>
+    <script src="utils/history.js"></script>
+    <script src="utils/filters.js"></script>
+    <script src="utils/state.js"></script>
+    <script src="utils/uploads.js"></script>
+    <script src="utils/drag-and-drop.js"></script>
+    <script src="utils/search.js"></script>
+</body>
+</html>
